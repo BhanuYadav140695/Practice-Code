@@ -1,0 +1,26 @@
+Question : You are given a 0-indexed integer array nums. An index i is part of a hill in nums if the 
+closest non-equal neighbors of i are smaller than nums[i]. Similarly, an index i is part of a valley in nums 
+if the closest non-equal neighbors of i are larger than nums[i]. Adjacent indices i and j are part of the same hill or valley if nums[i] == nums[j].
+
+Note that for an index to be part of a hill or valley, it must have a non-equal neighbor on both the left and right of the index.
+
+Return the number of hills and valleys in nums.
+
+Inputs Sample : nums = [2,4,1,1,6,5] , [6,6,5,5,4,1]
+Output Sample : 3 , 0
+
+Code : 
+class Solution:
+    def countHillValley(self, nums: List[int]) -> int:
+        count_hill_vally , i= 0 ,1
+        while i <len(nums)-1:
+            x = nums[i-1]
+            while i < len(nums)-2 and nums[i] == nums[i+1]:
+                i += 1
+            if nums[i] > x and nums[i] > nums[i+1]:
+                count_hill_vally +=1
+            elif nums[i] < x and nums[i] <nums[i+1] :
+                count_hill_vally +=1
+
+            i+=1
+        return count_hill_vally
